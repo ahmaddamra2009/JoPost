@@ -1,0 +1,64 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<form asp-action="Create" asp-controller="Employees" method="post">
+    <div class="container">
+
+
+        <div class="mb-3">
+            <label asp-for="EmployeeName" class="form-label"></label>
+            <input asp-for="EmployeeName" class="form-control" placeholder="Example: Ahmad Damra">
+            <span asp-validation-for="EmployeeName" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" placeholder="Example:ahmad@gmail.com">
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="BOD" class="form-label"></label>
+            <input asp-for="BOD" class="form-control">
+            <span asp-validation-for="BOD" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label"></label>
+            <textarea class="form-control" asp-for="Address" rows="3"></textarea>
+            <span asp-validation-for="Address" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Salary" class="form-label"></label>
+            <input asp-for="Salary" class="form-control" placeholder="Example: 500">
+            <span asp-validation-for="Salary" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Department Name</label>
+            <br />
+            <select class="form-select form-select-lg mb-3"
+                    aria-label="Choose One"
+                    asp-items="ViewBag.DeptList"
+                    asp-for="DepartmentId">
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <input type="submit" class="btn btn-success" value="Save" />
+        </div>
+
+    </div>
+</form>
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

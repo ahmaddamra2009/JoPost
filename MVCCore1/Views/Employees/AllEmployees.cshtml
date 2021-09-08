@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "AllEmployees";
+}
+
+<h1>All Employees</h1>
+@if (Model.Count() < 1)
+{
+    <div>
+        No Employee Created yet !!!
+        <a asp-action="Create" class="btn btn-primary">New Employee</a>
+    </div>
+}
+else
+{
+    <a asp-action="Create" asp-controller="Employees" class="btn btn-outline-primary">New Employee</a>
+    <table class="table table-bordered">
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.EmployeeName)</td>
+            <td>@Html.DisplayNameFor(m => m.Department.DepartmentName)</td>
+            <td>Operations</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EmployeeName</td>
+                <td>@item.Department.DepartmentName</td>
+                <td>
+                    <a asp-action="Details"
+                       asp-controller="Employees"
+                       class="btn btn-secondary"
+                       asp-route-id="@item.EmployeeId">More Details</a>
+                    <a asp-action="Edit"
+                       asp-controller="Employees"
+                       class="btn btn-info"
+                       asp-route-id="@item.EmployeeId">Edit</a>
+
+                    <a asp-action="Delete"
+                       asp-controller="Employees"
+                       class="btn btn-info"
+                       asp-route-id="@item.EmployeeId">Delete 1</a>
+                    <a asp-action="Delete2"
+                       asp-controller="Employees"
+                       class="btn btn-info"
+                       asp-route-id="@item.EmployeeId">Delete 2</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+}
